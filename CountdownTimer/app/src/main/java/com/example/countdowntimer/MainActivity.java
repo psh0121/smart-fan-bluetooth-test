@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewCountDown;
     private Button mButtonSet;
     private Button mButtonStartPause;
-    private Button mButtonReset;
 
     private CountDownTimer mCountDownTimer;
 
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
         mButtonSet = findViewById(R.id.button_set);
         mButtonStartPause = findViewById(R.id.button_start_pause);
-        mButtonReset = findViewById(R.id.button_reset);
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 setTime(millisInput);
                 mEditTextInput.setText("");
 
-                if (mTimerRunning) {
-                } else {
+                if (mTimerRunning) { }
+                else {
                     startTimer();
                 }
             }
@@ -66,14 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (mTimerRunning) {
                     pauseTimer();
-                } else {
-                }
-            }
-        });
-        mButtonReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetTimer();
+                } else { }
             }
         });
     }
@@ -103,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         mCountDownTimer.cancel();
         mTimerRunning = false;
         updateWatchInterface();
+
+        String timeLeftFormatted = String.format(Locale.getDefault(),
+                "00:00");
+        mTextViewCountDown.setText(timeLeftFormatted);
     }
     private void resetTimer() {
         mTimeLeftInMillis = mStartTimeInMillis;
@@ -127,21 +122,15 @@ public class MainActivity extends AppCompatActivity {
         if (mTimerRunning) {
             mEditTextInput.setVisibility(View.INVISIBLE);
             mButtonSet.setVisibility(View.INVISIBLE);
-            mButtonReset.setVisibility(View.INVISIBLE);
-            mButtonStartPause.setText("Pause");
+            mButtonStartPause.setVisibility(View.VISIBLE);
         } else {
             mEditTextInput.setVisibility(View.VISIBLE);
             mButtonSet.setVisibility(View.VISIBLE);
-            mButtonStartPause.setText("Start");
+            mButtonStartPause.setVisibility(View.INVISIBLE);
             if (mTimeLeftInMillis < 1000) {
                 mButtonStartPause.setVisibility(View.INVISIBLE);
             } else {
                 mButtonStartPause.setVisibility(View.VISIBLE);
-            }
-            if (mTimeLeftInMillis < mStartTimeInMillis) {
-                mButtonReset.setVisibility(View.VISIBLE);
-            } else {
-                mButtonReset.setVisibility(View.INVISIBLE);
             }
         }
     }

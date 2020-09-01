@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/edit_text_input"
         android:layout_toRightOf="@+id/edit_text_input"
-        android:text="Set" />
+        android:text="Start" />
 
     <TextView
         android:id="@+id/text_view_countdown"
@@ -40,17 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_view_countdown"
         android:layout_centerHorizontal="true"
-        android:text="start"/>
+        android:text="cancel"/>
 
-    <Button
-        android:id="@+id/button_reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_countdown"
-        android:layout_marginLeft="11dp"
-        android:layout_toRightOf="@+id/button_start_pause"
-        android:text="reset"
-        android:visibility="invisible"
-        tools:visibility="visible" />
 
 </RelativeLayout>
