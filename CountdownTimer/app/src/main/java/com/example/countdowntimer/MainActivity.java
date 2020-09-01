@@ -54,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 setTime(millisInput);
                 mEditTextInput.setText("");
+
+                if (mTimerRunning) {
+                } else {
+                    startTimer();
+                }
             }
         });
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 if (mTimerRunning) {
                     pauseTimer();
                 } else {
-                    startTimer();
                 }
             }
         });
